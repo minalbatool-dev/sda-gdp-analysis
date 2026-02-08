@@ -20,12 +20,14 @@ def main():
     # -------------------------------
     # 1️⃣ Load user input
     # -------------------------------
-    user_input = load_user_input("input.json")
-    
-    continent = user_input.get("continent", "Asia")
-    year = user_input.get("year", 2020)
-    operation = user_input.get("operation", "average")
-    output_type = user_input.get("output", "dashboard")
+    # Use the project's config.json by default (load_user_input default is config.json)
+    user_input = load_user_input()
+
+    # Use `or` to fall back when config contains explicit null/None values
+    continent = user_input.get("continent") or "Asia"
+    year = user_input.get("year") or 2020
+    operation = user_input.get("operation") or "average"
+    output_type = user_input.get("output") or "dashboard"
     
     print(f"User Input Configuration:")
     print(f"  • Continent: {continent}")
@@ -59,6 +61,20 @@ def main():
         print(f"Error: Missing required column in CSV - {e}")
         print("Required columns: 'Country Name', 'Country Code', 'Continent', year columns")
         return
+
+    # Validate config defaults against loaded data. If config contains a region
+    # that isn't present in the country-level `Continent` column, treat it as
+    # unset so prompts and filtering won't return empty results.
+    available_continents = set(df_clean['Continent'].dropna().unique())
+    available_years = set(df_clean['Year'].unique())
+
+    if continent not in available_continents:
+        print(f"Note: configured continent '{continent}' not present in data. Clearing continent filter.")
+        continent = None
+
+    if year not in available_years:
+        print(f"Note: configured year '{year}' not present in data. Clearing year filter.")
+        year = None
 
     # -------------------------------
     # 4️⃣ Optional additional filters via user input
