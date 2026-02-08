@@ -20,7 +20,7 @@ def main():
     # -------------------------------
     # 1️⃣ Load user input
     # -------------------------------
-    user_input = load_user_input("input.json")
+    user_input = load_user_input("config.json")
     
     continent = user_input.get("continent", "Asia")
     year = user_input.get("year", 2020)
