@@ -1,6 +1,7 @@
 {
-  "region": "South Asia",
-  "year": 2020,
-  "operation": "average",
+  "region": "Europe & Central Asia",
+  "year": 2019,
+  "operation": "sum",
   "output": "dashboard"
 }
+

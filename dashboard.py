@@ -16,7 +16,7 @@ def main():
     print("=" * 50)
     print("Starting SDA GDP Analysis Project")
     print("=" * 50 + "\n")
-
+    
     # -------------------------------
     # 1️⃣ Load user input
     # -------------------------------
