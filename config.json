@@ -1,7 +1,15 @@
 {
-  "Continent": "Asia",
-  "Year": 2020,
-  "Country": null,
-  "Operation": "average",
-  "Output": "dashboard"
+  "input": {
+    "type": "csv",
+    "path": "data/data.csv"
+  },
+  "output": {
+    "type": "console"
+  },
+  "parameters": {
+    "continent": "Asia",
+    "start_year": 2015,
+    "end_year": 2020,
+    "decline_years": 3
+  }
 }
