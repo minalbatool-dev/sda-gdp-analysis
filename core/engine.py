@@ -11,12 +11,16 @@ class TransformationEngine(PipelineService):
         self.config = config
         self._validate_config()
 
+    # -------------------------
+    # Public API
+    # -------------------------
+
     def execute(self, raw_data: List[Dict[str, Any]]) -> None:
         result = self._process(raw_data)
         self.sink.write(result)
 
     # -------------------------
-    # Utility Helpers
+    # Validation & Utilities
     # -------------------------
 
     def _validate_config(self):
@@ -30,6 +34,21 @@ class TransformationEngine(PipelineService):
             return float(value)
         except (TypeError, ValueError):
             return 0.0
+
+    def _is_valid_country(self, record: Dict[str, Any]) -> bool:
+        name = record.get("Country Name", "")
+        code = record.get("Country Code", "")
+    
+        # Exclude aggregates by checking if Continent is valid
+        if record.get("Continent") in ["Global", None, ""]:
+            return False
+
+        # Exclude known aggregated names (World Bank aggregates often have no ISO region classification)
+        if "World" in name or "income" in name:
+            return False
+
+        # Must have 3-letter ISO code
+        return len(code) == 3
 
     # -------------------------
     # Master Processing
@@ -58,141 +77,180 @@ class TransformationEngine(PipelineService):
     # -------------------------
 
     def _top_10(self, data, continent, year):
-        filtered = list(filter(
-            lambda x: x.get("Continent") == continent and x.get(year),
-            data
-        ))
 
-        sorted_data = sorted(
-            filtered,
-            key=lambda x: self._safe_float(x.get(year)),
-            reverse=True
-        )
+        filtered = [
+            {
+                "Country": x["Country Name"],
+                "GDP": self._safe_float(x.get(year))
+            }
+            for x in data
+            if x.get("Continent") == continent
+            and x.get(year)
+            and self._is_valid_country(x)
+        ]
+
+        sorted_data = sorted(filtered, key=lambda x: x["GDP"], reverse=True)
 
         return sorted_data[:10]
 
     def _bottom_10(self, data, continent, year):
-        filtered = list(filter(
-            lambda x: x.get("Continent") == continent and x.get(year),
-            data
-        ))
 
-        sorted_data = sorted(
-            filtered,
-            key=lambda x: self._safe_float(x.get(year))
-        )
+        filtered = [
+            {
+                "Country": x["Country Name"],
+                "GDP": self._safe_float(x.get(year))
+            }
+            for x in data
+            if x.get("Continent") == continent
+            and x.get(year)
+            and self._is_valid_country(x)
+        ]
+
+        sorted_data = sorted(filtered, key=lambda x: x["GDP"])
 
         return sorted_data[:10]
 
     def _growth_rate(self, data, continent, start_year, end_year):
-        filtered = list(filter(
-            lambda x: x.get("Continent") == continent
-            and x.get(start_year) and x.get(end_year),
-            data
-        ))
 
-        return list(map(
-            lambda x: {
-                "Country": x["Country Name"],
-                "GrowthRate": (
-                    ((self._safe_float(x[end_year]) - self._safe_float(x[start_year]))
-                     / self._safe_float(x[start_year])) * 100
-                    if self._safe_float(x[start_year]) != 0 else 0
-                )
-            },
-            filtered
-        ))
+        result = []
+
+        for x in data:
+            if (
+                x.get("Continent") == continent
+                and x.get(start_year)
+                and x.get(end_year)
+                and self._is_valid_country(x)
+            ):
+                start = self._safe_float(x[start_year])
+                end = self._safe_float(x[end_year])
+
+                if start != 0:
+                    growth = ((end - start) / start) * 100
+                else:
+                    growth = 0
+
+                result.append({
+                    "Country": x["Country Name"],
+                    "GrowthRate(%)": growth
+                })
+
+        return result
 
     def _average_by_continent(self, data, end_year):
-        continents = set(map(lambda x: x["Continent"], data))
+
+        continents = {
+            x["Continent"]
+            for x in data
+            if x.get("Continent") != "Global"
+        }
 
         result = {}
 
         for continent in continents:
-            filtered = list(filter(
-                lambda x: x["Continent"] == continent and x.get(end_year),
-                data
-            ))
+            values = [
+                self._safe_float(x.get(end_year))
+                for x in data
+                if x.get("Continent") == continent
+                and x.get(end_year)
+                and self._is_valid_country(x)
+            ]
 
-            values = list(map(lambda x: self._safe_float(x[end_year]), filtered))
-
-            result[continent] = (
-                sum(values) / len(values) if values else 0
-            )
+            result[continent] = sum(values) / len(values) if values else 0
 
         return result
 
     def _global_trend(self, data, start_year, end_year):
+
         years = range(int(start_year), int(end_year) + 1)
 
         return {
             str(year): sum(
-                map(
-                    lambda x: self._safe_float(x.get(str(year))),
-                    data
-                )
+                self._safe_float(x.get(str(year)))
+                for x in data
+                if self._is_valid_country(x)
             )
             for year in years
         }
 
     def _fastest_growing_continent(self, data, start_year, end_year):
-        continents = set(map(lambda x: x["Continent"], data))
 
-        growth_rates = {
-            continent:
-            (
-                sum(map(
-                    lambda x: self._safe_float(x.get(end_year)),
-                    filter(lambda x: x["Continent"] == continent, data)
-                ))
-                -
-                sum(map(
-                    lambda x: self._safe_float(x.get(start_year)),
-                    filter(lambda x: x["Continent"] == continent, data)
-                ))
-            )
-            for continent in continents
+        continents = {
+            x["Continent"]
+            for x in data
+            if x.get("Continent") != "Global"
         }
 
-        return max(growth_rates, key=growth_rates.get)
+        growth_rates = {}
+
+        for continent in continents:
+
+            start_total = sum(
+                self._safe_float(x.get(start_year))
+                for x in data
+                if x.get("Continent") == continent
+                and self._is_valid_country(x)
+            )
+
+            end_total = sum(
+                self._safe_float(x.get(end_year))
+                for x in data
+                if x.get("Continent") == continent
+                and self._is_valid_country(x)
+            )
+
+            growth_rates[continent] = end_total - start_total
+
+        return max(growth_rates, key=growth_rates.get) if growth_rates else None
 
     def _consistent_decline(self, data, start_year, end_year):
+
         years = list(range(int(start_year), int(end_year) + 1))
 
-        def declining(record):
+        declining_countries = []
+
+        for record in data:
+            if not self._is_valid_country(record):
+                continue
+
             values = [
                 self._safe_float(record.get(str(y)))
-                for y in years if record.get(str(y))
+                for y in years
+                if record.get(str(y))
             ]
-            return all(values[i] > values[i + 1] for i in range(len(values) - 1))
 
-        return list(map(
-            lambda x: x["Country Name"],
-            filter(declining, data)
-        ))
+            if len(values) > 1 and all(values[i] > values[i + 1] for i in range(len(values) - 1)):
+                declining_countries.append(record["Country Name"])
+
+        return declining_countries
 
     def _global_contribution(self, data, end_year):
 
-        continents = set(map(lambda x: x["Continent"], data))
-
-        total_global = sum(
-            map(lambda x: self._safe_float(x.get(end_year)), data)
-        )
-
-        contribution = {
-            continent:
-            (
-                sum(
-                    map(
-                        lambda x: self._safe_float(x.get(end_year)),
-                        filter(lambda x: x["Continent"] == continent, data)
-                    )
-                ) / total_global * 100
-                if total_global != 0 else 0
-            )
-            for continent in continents
+        continents = {
+            x["Continent"]
+            for x in data
+            if x.get("Continent") != "Global"
         }
 
-        return contribution
+        total_global = sum(
+            self._safe_float(x.get(end_year))
+            for x in data
+            if self._is_valid_country(x)
+        )
 
-    
+        contribution = {}
+
+        for continent in continents:
+
+            continent_total = sum(
+                self._safe_float(x.get(end_year))
+                for x in data
+                if x.get("Continent") == continent
+                and self._is_valid_country(x)
+            )
+
+            contribution[continent] = (
+                (continent_total / total_global) * 100
+                if total_global != 0 else 0
+            )
+
+        return contribution

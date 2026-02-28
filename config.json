@@ -8,6 +8,7 @@
   },
   "parameters": {
     "continent": "Asia",
+    "year": 2020,
     "start_year": 2015,
     "end_year": 2020,
     "decline_years": 3

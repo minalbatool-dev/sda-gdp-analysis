@@ -1,11 +1,9 @@
 from typing import List
 
-
 class ConsoleWriter:
-    def write(self, records: List[dict]) -> None:
-        print("\n===== ANALYSIS OUTPUT =====\n")
-        for record in records:
-            for key, value in record.items():
-                print(f"{key}:")
-                print(value)
-                print()
+    def write(self, data):
+        print("\n===== GDP ANALYSIS RESULTS =====\n")
+        
+        for section, content in data.items():
+            print(f"\n--- {section.upper()} ---")
+            print(content)
