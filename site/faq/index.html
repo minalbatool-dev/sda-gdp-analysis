@@ -1,0 +1,2338 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A modular, dependency-inverted GDP analysis system following software architecture best practices">
+      
+      
+      
+      
+        <link rel="prev" href="../extend/output_plugins/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>FAQ - GDP Analysis Platform</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#faq" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="GDP Analysis Platform" class="md-header__button md-logo" aria-label="GDP Analysis Platform" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GDP Analysis Platform
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/example/gdp-analysis" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guide/quickstart/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api/contracts/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../extend/input_plugins/" class="md-tabs__link">
+          
+  
+  
+  Extending
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="GDP Analysis Platform" class="md-nav__button md-logo" aria-label="GDP Analysis Platform" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GDP Analysis Platform
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/example/gdp-analysis" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/dependency_inversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependency Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/running/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running the Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    core/contracts.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    core/engine.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plugins/inputs.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plugins/outputs.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    main.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extending
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extending
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extend/input_plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding Input Plugins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extend/output_plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding Output Plugins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-what-is-this-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What is this project?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-why-is-it-called-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Why is it called "Phase 2"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-who-should-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Who should use this?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-whats-dependency-inversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What's Dependency Inversion?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-why-use-protocols-instead-of-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Why use Protocols instead of inheritance?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-add-a-new-input-format-without-modifying-core-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I add a new input format without modifying core code?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-add-a-new-output-format-without-modifying-core-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I add a new output format without modifying core code?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-what-does-configjson-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What does config.json do?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-run-the-pipeline-without-modifying-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I run the pipeline without modifying code?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-if-i-run-the-pipeline-with-invalid-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What if I run the pipeline with invalid configuration?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-run-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I run the analysis?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-long-does-it-take" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How long does it take?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-if-the-output-directory-doesnt-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What if the output directory doesn't exist?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-use-both-csv-and-json-at-the-same-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I use both CSV and JSON at the same time?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-whats-the-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What's the data source?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-use-other-gdp-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I use other GDP data?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-is-the-json-version-auto-generated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Is the JSON version auto-generated?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-why-is-there-both-csv-and-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Why is there both CSV and JSON?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-what-analytics-are-provided" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What analytics are provided?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-add-a-new-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I add a new metric?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-does-the-engine-filter-invalid-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How does the engine filter invalid data?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-view-the-api-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I view the API docs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-where-are-the-docstrings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Where are the docstrings?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-complete-is-the-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How complete is the documentation?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-i-get-modulenotfounderror-no-module-named-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: I get "ModuleNotFoundError: No module named 'core'"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-i-get-filenotfounderror-when-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: I get "FileNotFoundError" when running
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-results-look-wrong-or-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Results look wrong or empty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-run-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I run tests?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contributing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-add-a-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I add a feature?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-patterns-should-i-follow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What patterns should I follow?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-is-there-a-memory-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Is there a memory limit?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-optimize-for-large-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I optimize for large datasets?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-what-is-this-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What is this project?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-why-is-it-called-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Why is it called "Phase 2"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-who-should-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Who should use this?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-whats-dependency-inversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What's Dependency Inversion?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-why-use-protocols-instead-of-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Why use Protocols instead of inheritance?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-add-a-new-input-format-without-modifying-core-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I add a new input format without modifying core code?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-add-a-new-output-format-without-modifying-core-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I add a new output format without modifying core code?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-what-does-configjson-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What does config.json do?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-run-the-pipeline-without-modifying-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I run the pipeline without modifying code?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-if-i-run-the-pipeline-with-invalid-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What if I run the pipeline with invalid configuration?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-run-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I run the analysis?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-long-does-it-take" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How long does it take?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-if-the-output-directory-doesnt-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What if the output directory doesn't exist?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-use-both-csv-and-json-at-the-same-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I use both CSV and JSON at the same time?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-whats-the-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What's the data source?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-use-other-gdp-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I use other GDP data?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-is-the-json-version-auto-generated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Is the JSON version auto-generated?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-why-is-there-both-csv-and-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Why is there both CSV and JSON?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-what-analytics-are-provided" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What analytics are provided?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-add-a-new-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I add a new metric?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-does-the-engine-filter-invalid-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How does the engine filter invalid data?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-view-the-api-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I view the API docs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-where-are-the-docstrings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Where are the docstrings?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-complete-is-the-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How complete is the documentation?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-i-get-modulenotfounderror-no-module-named-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: I get "ModuleNotFoundError: No module named 'core'"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-i-get-filenotfounderror-when-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: I get "FileNotFoundError" when running
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-results-look-wrong-or-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Results look wrong or empty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-run-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I run tests?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contributing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-add-a-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How do I add a feature?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-patterns-should-i-follow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What patterns should I follow?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-is-there-a-memory-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Is there a memory limit?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-optimize-for-large-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Can I optimize for large datasets?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="faq">FAQ</h1>
+<h2 id="general">General</h2>
+<h3 id="q-what-is-this-project">Q: What is this project?</h3>
+<p><strong>A:</strong> A modular, production-ready GDP analysis system that processes World Bank data and produces eight key analytics (rankings, trends, growth rates, etc.).</p>
+<h3 id="q-why-is-it-called-phase-2">Q: Why is it called "Phase 2"?</h3>
+<p><strong>A:</strong> Phase 1 was a monolithic script. Phase 2 refactored it using proper software architecture (Dependency Inversion, Protocols, modular design).</p>
+<h3 id="q-who-should-use-this">Q: Who should use this?</h3>
+<p><strong>A:</strong> Data analysts, economists, software engineers learning SOLID principles, or anyone needing extensible GDP analytics.</p>
+<hr />
+<h2 id="architecture">Architecture</h2>
+<h3 id="q-whats-dependency-inversion">Q: What's Dependency Inversion?</h3>
+<p><strong>A:</strong> A design principle that makes high-level code (business logic) independent of low-level code (I/O, config). Our core engine doesn't care if you read from CSV or JSON, or write to console or file.</p>
+<h3 id="q-why-use-protocols-instead-of-inheritance">Q: Why use Protocols instead of inheritance?</h3>
+<p><strong>A:</strong> Protocols enable <strong>duck typing</strong> – any class with matching methods automatically satisfies the interface. This prevents tight coupling and makes testing easier.</p>
+<h3 id="q-can-i-add-a-new-input-format-without-modifying-core-code">Q: Can I add a new input format without modifying core code?</h3>
+<p><strong>A:</strong> Yes! Create a reader class in <code>plugins/inputs.py</code>, register it in <code>main.py</code>, and use it in <code>config.json</code>. Done.</p>
+<h3 id="q-can-i-add-a-new-output-format-without-modifying-core-code">Q: Can I add a new output format without modifying core code?</h3>
+<p><strong>A:</strong> Yes! Create a writer class in <code>plugins/outputs.py</code>, register it in <code>main.py</code>, and use it in <code>config.json</code>. Done.</p>
+<hr />
+<h2 id="configuration">Configuration</h2>
+<h3 id="q-what-does-configjson-do">Q: What does config.json do?</h3>
+<p><strong>A:</strong> Drives the entire pipeline. Specifies input source, output destination, and analysis parameters (continent, years, etc.).</p>
+<h3 id="q-can-i-run-the-pipeline-without-modifying-code">Q: Can I run the pipeline without modifying code?</h3>
+<p><strong>A:</strong> Yes! Edit <code>config.json</code> to change input/output and parameters. No code changes needed.</p>
+<h3 id="q-what-if-i-run-the-pipeline-with-invalid-configuration">Q: What if I run the pipeline with invalid configuration?</h3>
+<p><strong>A:</strong> The <code>TransformationEngine</code> validates required keys and raises <code>ValueError</code> with a helpful message.</p>
+<hr />
+<h2 id="usage">Usage</h2>
+<h3 id="q-how-do-i-run-the-analysis">Q: How do I run the analysis?</h3>
+<p><strong>A:</strong> 
+1. Edit <code>config.json</code> with your desired settings
+2. Run <code>python main.py</code>
+3. Results are displayed (console) or written to file</p>
+<h3 id="q-how-long-does-it-take">Q: How long does it take?</h3>
+<p><strong>A:</strong> ~1 second for a typical analysis (266 countries, 8 metrics).</p>
+<h3 id="q-what-if-the-output-directory-doesnt-exist">Q: What if the output directory doesn't exist?</h3>
+<p><strong>A:</strong> Create it first: <code>mkdir out</code></p>
+<h3 id="q-can-i-use-both-csv-and-json-at-the-same-time">Q: Can I use both CSV and JSON at the same time?</h3>
+<p><strong>A:</strong> Only one at a time in <code>config.json</code>. But you can run the pipeline multiple times with different configs.</p>
+<hr />
+<h2 id="data">Data</h2>
+<h3 id="q-whats-the-data-source">Q: What's the data source?</h3>
+<p><strong>A:</strong> World Bank GDP data (CSV format, 266 countries, 2015-2020).</p>
+<h3 id="q-can-i-use-other-gdp-data">Q: Can I use other GDP data?</h3>
+<p><strong>A:</strong> Yes! As long as it has the same columns (Country Name, Country Code, Continent, years).</p>
+<h3 id="q-is-the-json-version-auto-generated">Q: Is the JSON version auto-generated?</h3>
+<p><strong>A:</strong> On first run, if JSON input is configured but the file doesn't exist, it's created from the CSV.</p>
+<h3 id="q-why-is-there-both-csv-and-json">Q: Why is there both CSV and JSON?</h3>
+<p><strong>A:</strong> To demonstrate that the same engine works with different input formats.</p>
+<hr />
+<h2 id="analytics">Analytics</h2>
+<h3 id="q-what-analytics-are-provided">Q: What analytics are provided?</h3>
+<p><strong>A:</strong> 
+1. Top 10 countries by GDP (given continent/year)
+2. Bottom 10 countries by GDP
+3. GDP growth rate per country (over date range)
+4. Average GDP per continent
+5. Global GDP trend (year-by-year)
+6. Fastest growing continent (by absolute change)
+7. Countries with consistent decline (every year)
+8. Each continent's share of global GDP</p>
+<h3 id="q-can-i-add-a-new-metric">Q: Can I add a new metric?</h3>
+<p><strong>A:</strong> Yes! Add a method like <code>_my_metric()</code> to <code>TransformationEngine</code>, call it in <code>_process()</code>, and return it in the result dict.</p>
+<h3 id="q-how-does-the-engine-filter-invalid-data">Q: How does the engine filter invalid data?</h3>
+<p><strong>A:</strong> The <code>_is_valid_country()</code> method excludes:
+- Rows without a 3-letter ISO country code
+- World Bank aggregates (e.g., "East Asia &amp; Pacific")</p>
+<hr />
+<h2 id="documentation">Documentation</h2>
+<h3 id="q-how-do-i-view-the-api-docs">Q: How do I view the API docs?</h3>
+<p><strong>A:</strong> 
+1. Install mkdocs: <code>pip install mkdocs mkdocs-material</code>
+2. Build site: <code>mkdocs build</code>
+3. Serve locally: <code>mkdocs serve</code>
+4. Visit <code>http://localhost:8000</code> in your browser</p>
+<h3 id="q-where-are-the-docstrings">Q: Where are the docstrings?</h3>
+<p><strong>A:</strong> In each Python file (contracts.py, engine.py, inputs.py, outputs.py, main.py).</p>
+<h3 id="q-how-complete-is-the-documentation">Q: How complete is the documentation?</h3>
+<p><strong>A:</strong> Very! Module-level docs, class docs, method docs, usage examples, and a full mkdocs site with guides.</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="q-i-get-modulenotfounderror-no-module-named-core">Q: I get "ModuleNotFoundError: No module named 'core'"</h3>
+<p><strong>A:</strong> Make sure you're running from the project root: <code>cd d:\Pictures\FAST NUCES\4 Semester\SDA\Project\Phase 2</code></p>
+<h3 id="q-i-get-filenotfounderror-when-running">Q: I get "FileNotFoundError" when running</h3>
+<p><strong>A:</strong> Check that <code>config.json</code> paths are correct and files exist:
+- For CSV input: <code>data/data.csv</code> must exist
+- For JSON input: <code>data/data.json</code> must exist
+- For file output: parent directory must exist</p>
+<h3 id="q-results-look-wrong-or-empty">Q: Results look wrong or empty</h3>
+<p><strong>A:</strong> Check <code>parameters.continent</code> matches actual data. Try "Asia" or "Europe" if unsure.</p>
+<h3 id="q-can-i-run-tests">Q: Can I run tests?</h3>
+<p><strong>A:</strong> Not yet, but the code is designed to be testable. pytest tests would be a great addition!</p>
+<hr />
+<h2 id="contributing">Contributing</h2>
+<h3 id="q-how-do-i-add-a-feature">Q: How do I add a feature?</h3>
+<p><strong>A:</strong> 
+1. Create a branch: <code>git checkout -b feature/my-feature</code>
+2. Modify code (follow existing patterns)
+3. Test thoroughly
+4. Commit with clear message: <code>git commit -m "feat: add my feature"</code></p>
+<h3 id="q-what-patterns-should-i-follow">Q: What patterns should I follow?</h3>
+<p><strong>A:</strong> 
+- Use type hints (PEP 484)
+- Write docstrings for all public methods
+- No imports from plugins in core
+- All new outputs must implement DataSink protocol
+- All new inputs must call PipelineService.execute()</p>
+<hr />
+<h2 id="performance">Performance</h2>
+<h3 id="q-is-there-a-memory-limit">Q: Is there a memory limit?</h3>
+<p><strong>A:</strong> For 266 countries × 6 years of data, memory usage is &lt;50 MB.</p>
+<h3 id="q-can-i-optimize-for-large-datasets">Q: Can I optimize for large datasets?</h3>
+<p><strong>A:</strong> Possible approaches:
+- Stream data line-by-line (modify <code>TransformationEngine</code>)
+- Cache intermediate results
+- Parallelize continent calculations</p>
+<hr />
+<p>Still have questions? Check <a href="../architecture/overview/">Architecture Overview</a> or <a href="../guide/quickstart/">Quick Start</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tabs", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

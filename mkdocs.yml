@@ -1,0 +1,37 @@
+site_name: GDP Analysis Platform
+site_description: A modular, dependency-inverted GDP analysis system following software architecture best practices
+repo_url: https://github.com/example/gdp-analysis
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: orange
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Architecture:
+      - Overview: architecture/overview.md
+      - Core Contracts: architecture/contracts.md
+      - Dependency Inversion: architecture/dependency_inversion.md
+      - Diagram: architecture/diagram.md
+  - User Guide:
+      - Quick Start: guide/quickstart.md
+      - Configuration: guide/configuration.md
+      - Running the Pipeline: guide/running.md
+  - API Reference:
+      - core/contracts.py: api/contracts.md
+      - core/engine.py: api/engine.md
+      - plugins/inputs.py: api/inputs.md
+      - plugins/outputs.py: api/outputs.md
+      - main.py: api/main.md
+  - Extending:
+      - Adding Input Plugins: extend/input_plugins.md
+      - Adding Output Plugins: extend/output_plugins.md
+  - FAQ: faq.md

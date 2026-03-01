@@ -1,2 +1,2 @@
 from .inputs import CSVReader, JSONReader
-from .outputs import ConsoleWriter
+from .outputs import ConsoleWriter, JSONWriter, CSVWriter

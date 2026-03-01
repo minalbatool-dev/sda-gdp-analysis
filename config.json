@@ -1,10 +1,11 @@
 {
   "input": {
-    "type": "csv",
-    "path": "data/data.csv"
+    "type": "json",
+    "path": "data/data.json"
   },
   "output": {
-    "type": "console"
+    "type": "json",
+    "path": "out/results.json"
   },
   "parameters": {
     "continent": "Asia",
