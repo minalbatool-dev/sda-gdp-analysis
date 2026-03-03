@@ -1,0 +1,47 @@
+@startuml
+' ### Phase 2 dependency‑inversion diagram ###
+
+package "main (orchestrator)" {
+  class Main {
+    +bootstrap()
+  }
+}
+
+package core {
+  interface DataSink
+  interface PipelineService
+  class TransformationEngine {
+    - sink: DataSink
+    + __init__(sink, config)
+    + execute(raw_data)
+  }
+}
+
+package "plugins.inputs" {
+  class CSVReader
+  class JSONReader
+}
+
+package "plugins.outputs" {
+  class ConsoleWriter
+  class JSONWriter
+  class CSVWriter
+}
+
+' relationships
+CSVReader --> PipelineService : uses
+JSONReader --> PipelineService : uses
+TransformationEngine ..|> PipelineService
+TransformationEngine --> DataSink : writes to
+ConsoleWriter ..|> DataSink
+JSONWriter ..|> DataSink
+CSVWriter ..|> DataSink
+
+Main --> CSVReader
+Main --> JSONReader
+Main --> ConsoleWriter
+Main --> JSONWriter
+Main --> CSVWriter
+Main --> TransformationEngine
+
+@enduml

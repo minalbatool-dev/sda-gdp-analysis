@@ -1,12 +1,79 @@
-# core/engine.py
+"""Core transformation engine: business logic for GDP analysis.
 
+The TransformationEngine is the heart of the system:
+
+- **Implements** PipelineService: accepts raw data via execute()
+- **Depends on** DataSink: injects a writer to persist results
+- **Computes** all analytics: rankings, trends, growth rates, aggregations
+
+Design principles:
+    - Constructor injection: sink and config are passed in, never hardcoded
+    - Pure transformations: no I/O side effects except final sink.write()
+    - Validation: filters invalid/aggregate countries before analysis
+    - Configurable: changes in config.json automatically affect output
+
+Building a new analytic is simple: add a method like _my_metric(),
+call it in _process(), and return it in the result dict.
+
+Examples:
+    >>> from core.engine import TransformationEngine
+    >>> from plugins.outputs import ConsoleWriter
+    >>> config = {"continent": "Asia", "year": 2020, "start_year": 2015, "end_year": 2020}
+    >>> sink = ConsoleWriter()
+    >>> engine = TransformationEngine(sink, config)
+    >>> engine.execute(raw_data)  # processes data and outputs result
+"""
 from typing import List, Dict, Any
 from core.contracts import DataSink, PipelineService
 
 
 class TransformationEngine(PipelineService):
+    """Main orchestrator for GDP data transformation and analysis.
+
+    This class implements the PipelineService protocol, meaning external input
+    plugins can call its execute() method to submit raw data. The engine then
+    transforms the data according to config and writes results to an
+    injected DataSink.
+
+    Attributes:
+        sink (DataSink): The output destination (injected at construction).
+        config (Dict): Parameters controlling the analysis (continent, year range).
+
+    Constructor Injection:
+        Both sink and config are required at construction and cannot be changed.
+        This makes the dependency graph clear and testable.
+
+    Public Methods:
+        - execute(raw_data): Processes raw data and outputs result via sink.
+
+    Analytics:
+        - _top_10, _bottom_10: Rankings by GDP for given year
+        - _growth_rate: % change per country over date range
+        - _average_by_continent: Mean GDP per continent
+        - _global_trend: Year-by-year aggregate GDP
+        - _fastest_growing_continent: Highest growth by absolute change
+        - _consistent_decline: Countries with declining GDP every year
+        - _global_contribution: Each continent\'s % of global GDP
+
+    Validation:
+        - _is_valid_country(): Filters aggregates; requires 3-letter ISO code
+    """
 
     def __init__(self, sink: DataSink, config: Dict[str, Any]):
+        """Initialize the engine with output sink and analysis parameters.
+
+        Args:
+            sink: DataSink implementation (ConsoleWriter, JSONWriter, etc.).
+                  Engine calls sink.write(results) after processing.
+            config: Dict with keys:
+                - continent: str (e.g., "Asia")
+                - year: int (reference year for rankings)
+                - start_year: int (first year in trend)
+                - end_year: int (last year in trend)
+
+        Raises:
+            ValueError: If required config keys are missing.
+        """
         self.sink = sink
         self.config = config
         self._validate_config()

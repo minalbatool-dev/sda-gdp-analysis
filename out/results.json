@@ -1,0 +1,324 @@
+{
+  "top_10": [
+    {
+      "Country": "East Asia & Pacific (IDA & IBRD countries)",
+      "GDP": 17783207218899.1
+    },
+    {
+      "Country": "China",
+      "GDP": 14996414166715.1
+    },
+    {
+      "Country": "Japan",
+      "GDP": 5054068005376.28
+    },
+    {
+      "Country": "Middle East, North Africa, Afghanistan & Pakistan",
+      "GDP": 3587451756047.23
+    },
+    {
+      "Country": "South Asia",
+      "GDP": 3172770463749.49
+    },
+    {
+      "Country": "South Asia (IDA & IBRD)",
+      "GDP": 3172770463749.49
+    },
+    {
+      "Country": "India",
+      "GDP": 2674851578587.27
+    },
+    {
+      "Country": "Korea, Rep.",
+      "GDP": 1744070276373.34
+    },
+    {
+      "Country": "Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",
+      "GDP": 1652429826440.19
+    },
+    {
+      "Country": "Indonesia",
+      "GDP": 1059054842698.48
+    }
+  ],
+  "bottom_10": [
+    {
+      "Country": "Timor-Leste",
+      "GDP": 2162619240.86927
+    },
+    {
+      "Country": "Bhutan",
+      "GDP": 2457604333.90927
+    },
+    {
+      "Country": "Maldives",
+      "GDP": 3712604583.36665
+    },
+    {
+      "Country": "Tajikistan",
+      "GDP": 8133963550.65742
+    },
+    {
+      "Country": "Kyrgyz Republic",
+      "GDP": 8270468614.24051
+    },
+    {
+      "Country": "Brunei Darussalam",
+      "GDP": 12005799653.9835
+    },
+    {
+      "Country": "Syrian Arab Republic",
+      "GDP": 12047752036.091
+    },
+    {
+      "Country": "Armenia",
+      "GDP": 12641698583.2152
+    },
+    {
+      "Country": "Mongolia",
+      "GDP": 13312981429.0891
+    },
+    {
+      "Country": "West Bank and Gaza",
+      "GDP": 15531700000.0
+    }
+  ],
+  "growth_rate": [
+    {
+      "Country": "Afghanistan",
+      "GrowthRate(%)": 4.294438638131447
+    },
+    {
+      "Country": "United Arab Emirates",
+      "GrowthRate(%)": -6.495527503642793
+    },
+    {
+      "Country": "Armenia",
+      "GrowthRate(%)": 19.78863142733114
+    },
+    {
+      "Country": "Azerbaijan",
+      "GrowthRate(%)": -19.562870812798796
+    },
+    {
+      "Country": "Bangladesh",
+      "GrowthRate(%)": 91.64024643856496
+    },
+    {
+      "Country": "Bahrain",
+      "GrowthRate(%)": 10.190648929245544
+    },
+    {
+      "Country": "Brunei Darussalam",
+      "GrowthRate(%)": -7.149852980384703
+    },
+    {
+      "Country": "Bhutan",
+      "GrowthRate(%)": 12.331409715826041
+    },
+    {
+      "Country": "China",
+      "GrowthRate(%)": 32.937331648894805
+    },
+    {
+      "Country": "Georgia",
+      "GrowthRate(%)": 5.170018431312177
+    },
+    {
+      "Country": "Hong Kong SAR, China",
+      "GrowthRate(%)": 11.492947438778312
+    },
+    {
+      "Country": "Indonesia",
+      "GrowthRate(%)": 23.023713247456516
+    },
+    {
+      "Country": "India",
+      "GrowthRate(%)": 27.15660674839092
+    },
+    {
+      "Country": "Iran, Islamic Rep.",
+      "GrowthRate(%)": -31.344076981386948
+    },
+    {
+      "Country": "Iraq",
+      "GrowthRate(%)": 8.46935593582457
+    },
+    {
+      "Country": "Israel",
+      "GrowthRate(%)": 35.35740556979916
+    },
+    {
+      "Country": "Jordan",
+      "GrowthRate(%)": 13.251516938155191
+    },
+    {
+      "Country": "Japan",
+      "GrowthRate(%)": 13.70409126952133
+    },
+    {
+      "Country": "Kazakhstan",
+      "GrowthRate(%)": -7.216309976666868
+    },
+    {
+      "Country": "Kyrgyz Republic",
+      "GrowthRate(%)": 23.8431982347956
+    },
+    {
+      "Country": "Cambodia",
+      "GrowthRate(%)": 44.03006750555596
+    },
+    {
+      "Country": "Korea, Rep.",
+      "GrowthRate(%)": 13.309273521700455
+    },
+    {
+      "Country": "Kuwait",
+      "GrowthRate(%)": -3.0894688789740314
+    },
+    {
+      "Country": "Lao PDR",
+      "GrowthRate(%)": 31.577049023507065
+    },
+    {
+      "Country": "Lebanon",
+      "GrowthRate(%)": -36.485982735359165
+    },
+    {
+      "Country": "Sri Lanka",
+      "GrowthRate(%)": -0.8869712073032319
+    },
+    {
+      "Country": "Macao SAR, China",
+      "GrowthRate(%)": -43.747843472662915
+    },
+    {
+      "Country": "Maldives",
+      "GrowthRate(%)": -10.095658039991868
+    },
+    {
+      "Country": "Middle East, North Africa, Afghanistan & Pakistan",
+      "GrowthRate(%)": 0.8159597403090716
+    },
+    {
+      "Country": "Myanmar",
+      "GrowthRate(%)": 32.544380274500426
+    },
+    {
+      "Country": "Mongolia",
+      "GrowthRate(%)": 14.57060661430663
+    },
+    {
+      "Country": "Malaysia",
+      "GrowthRate(%)": 11.979514199253453
+    },
+    {
+      "Country": "Nepal",
+      "GrowthRate(%)": 37.24367646072647
+    },
+    {
+      "Country": "Oman",
+      "GrowthRate(%)": -3.558978730715688
+    },
+    {
+      "Country": "Pakistan",
+      "GrowthRate(%)": 0.15402512097695692
+    },
+    {
+      "Country": "Philippines",
+      "GrowthRate(%)": 18.04732234931706
+    },
+    {
+      "Country": "West Bank and Gaza",
+      "GrowthRate(%)": 11.159858005782828
+    },
+    {
+      "Country": "Qatar",
+      "GrowthRate(%)": -10.713685150993937
+    },
+    {
+      "Country": "South Asia",
+      "GrowthRate(%)": 31.404680300941667
+    },
+    {
+      "Country": "Saudi Arabia",
+      "GrowthRate(%)": 10.749243165414505
+    },
+    {
+      "Country": "Singapore",
+      "GrowthRate(%)": 13.366073933616162
+    },
+    {
+      "Country": "Syrian Arab Republic",
+      "GrowthRate(%)": -26.836386806103178
+    },
+    {
+      "Country": "East Asia & Pacific (IDA & IBRD countries)",
+      "GrowthRate(%)": 31.413314495774173
+    },
+    {
+      "Country": "Thailand",
+      "GrowthRate(%)": 24.711335618301856
+    },
+    {
+      "Country": "Tajikistan",
+      "GrowthRate(%)": -1.661960625140518
+    },
+    {
+      "Country": "Turkmenistan",
+      "GrowthRate(%)": 15.950375610364631
+    },
+    {
+      "Country": "Timor-Leste",
+      "GrowthRate(%)": 35.98963804633992
+    },
+    {
+      "Country": "Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",
+      "GrowthRate(%)": -6.467310416429857
+    },
+    {
+      "Country": "South Asia (IDA & IBRD)",
+      "GrowthRate(%)": 31.404680300941667
+    },
+    {
+      "Country": "Turkiye",
+      "GrowthRate(%)": -15.232569482605305
+    },
+    {
+      "Country": "Uzbekistan",
+      "GrowthRate(%)": -22.916305472256475
+    },
+    {
+      "Country": "Viet Nam",
+      "GrowthRate(%)": 44.870918760564244
+    }
+  ],
+  "average_by_continent": {
+    "Asia": 1186724516781.8745,
+    "Oceania": 1390011057608.5596,
+    "South America": 848664135836.9453,
+    "North America": 1390066534737.6553,
+    "Africa": 149368379509.82986,
+    "Europe": 2421918554210.6055
+  },
+  "global_trend": {
+    "2015": 254982339316356.7,
+    "2016": 258967670188341.38,
+    "2017": 275798986513626.84,
+    "2018": 293756958342144.8,
+    "2019": 297753441486234.5,
+    "2020": 289191698345157.9
+  },
+  "fastest_growing_continent": "Europe",
+  "consistent_decline": [
+    "Yemen, Rep."
+  ],
+  "global_contribution": {
+    "Asia": 21.338674389956157,
+    "Oceania": 10.093731036131071,
+    "South America": 4.108450543257502,
+    "North America": 16.342883440821158,
+    "Africa": 2.8924167949548356,
+    "Europe": 45.223843794879286
+  }
+}
