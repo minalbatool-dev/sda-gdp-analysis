@@ -1,0 +1,71 @@
+@startuml
+title Phase 3: Generic Concurrent Real-Time Pipeline Architecture
+
+package "Configuration" {
+  class ConfigLoader {
+    +load(filepath: str): dict
+  }
+}
+
+package "Input Module (Producer)" {
+  class InputReader {
+    -config: dict
+    -raw_queue: Queue
+    +run()
+    -_map_row(row, schema): dict
+  }
+}
+
+package "Core Module (Functional Consumers)" {
+  class Worker {
+    -config: dict
+    -raw_queue: Queue
+    -processed_queue: Queue
+    +run()
+  }
+  class processors << (M,#FF7700) module >> {
+    +running_average(state, item, window_size) : tuple
+  }
+}
+
+package "Output Module & Telemetry (Observers)" {
+  class PipelineTelemetry {
+    -raw_queue: Queue
+    -processed_queue: Queue
+    -observers: list
+    +subscribe(observer)
+    +notify()
+  }
+  
+  class Dashboard {
+    -max_queue_size: int
+    +update(raw_size, processed_size)
+  }
+  
+  class LiveCharts {
+    -config: dict
+    +render(item)
+  }
+}
+
+class MainOrchestrator << (O,#8888AA) script >>
+
+MainOrchestrator --> ConfigLoader : uses
+MainOrchestrator --> InputReader : wraps in Process
+MainOrchestrator --> Worker : wraps in Process (x N)
+MainOrchestrator --> PipelineTelemetry : instantiates
+MainOrchestrator ..> Queue : initializes raw/processed streams
+
+InputReader --> Queue : raw stream (puts mapped packets)
+Queue --> Worker : pulls raw packets
+Worker --> processors : uses pure functions
+Worker --> Queue : processed stream (puts updated packets)
+Queue --> Dashboard : visualized indirectly via Telemetry
+Queue --> LiveCharts : drained by Orchestrator
+
+PipelineTelemetry o-- Dashboard : Observer Pattern
+
+note "Bounded Multiprocessing Queues naturally enforce Backpressure\nif Producers exceed Core parallelism speed." as N1
+Queue .. N1
+
+@enduml

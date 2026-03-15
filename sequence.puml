@@ -1,0 +1,66 @@
+@startuml
+title Phase 3 Sequence Diagram: Pipeline Execution
+
+actor User
+participant main
+participant config
+participant InputReader <<Producer Process>>
+participant raw_queue <<mp.Queue>>
+participant PipelineTelemetry <<Subject>>
+participant Dashboard <<Observer>>
+participant Worker <<Consumer Process (x Core Parallels)>>
+participant processors
+participant processed_queue <<mp.Queue>>
+participant LiveCharts
+
+User -> main: python phase3/main.py
+activate main
+
+main -> config: load("config.json")
+config --> main: dict
+
+main -> raw_queue ** : create(maxsize)
+main -> processed_queue ** : create(maxsize)
+main -> PipelineTelemetry ** : init(raw_queue, processed_queue)
+main -> Dashboard ** : init()
+main -> LiveCharts ** : init()
+
+main -> PipelineTelemetry : subscribe(Dashboard)
+
+main -> InputReader ** : init(config, raw_queue)
+main -> Worker ** : init(config, raw_queue, processed_queue)
+
+main -> InputReader : Process.start()
+main -> Worker : Process.start() x3
+
+loop Main Orchestrator Loop
+  main -> PipelineTelemetry : notify()
+  PipelineTelemetry -> raw_queue : qsize()
+  PipelineTelemetry -> processed_queue : qsize()
+  PipelineTelemetry -> Dashboard : update(raw, proc)
+  Dashboard -> view: [Color Encoded Terminal Bars]
+  
+  main -> processed_queue : get_nowait()
+  alt items available
+    processed_queue --> main: updated_item
+    main -> LiveCharts: render(updated_item)
+  end
+end
+
+=== Asynchronous Parallel Execution ===
+
+loop Producer Loop (Inside InputReader Process)
+  InputReader -> InputReader: sleep(input_delay_seconds)
+  InputReader -> raw_queue: put(mapped_packet)
+end
+InputReader -> InputReader: Process ends
+main -> raw_queue: put(Poison Pill) x3
+
+loop Consumer Loop (Inside Worker Process)
+  Worker <- raw_queue: get()
+  Worker -> processors: running_average(immutable_state, item, window)
+  processors --> Worker: (new_state, updated_item)
+  Worker -> processed_queue: put(updated_item)
+end
+
+@enduml
