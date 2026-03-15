@@ -1,34 +1,27 @@
-from typing import Dict, Any, Tuple
+import hashlib
 
-def running_average(state: tuple, item: Dict[str, Any], window_size: int) -> Tuple[tuple, Dict[str, Any]]:
-    """
-    Purely functional calculation of a running average.
-    
-    Args:
-        state: A tuple representing the previous history. e.g., (oldest_val, next_val, ..., newest_val). 
-               Must be immutable.
-        item: The current generic data packet.
-        window_size: The window size for the running average.
-        
-    Returns:
-        (new_state, updated_item): The new immutable state and the item with added calculations.
-    """
-    
-    metric_value = item.get("metric_value", 0.0)
-    
-    # Calculate new state
-    new_state_list = list(state)
-    new_state_list.append(metric_value)
-    if len(new_state_list) > window_size:
-        new_state_list = new_state_list[-window_size:]
-        
-    new_state = tuple(new_state_list)
-    
-    # Calculate computed metric
-    computed_avg = sum(new_state) / len(new_state) if new_state else 0.0
-    
-    # Do not mutate the original dictionary
-    updated_item = item.copy()
-    updated_item["computed_metric"] = computed_avg
-    
-    return new_state, updated_item
+def generate_signature(raw_value_str: str, key: str, iterations: int) -> str:
+    password_bytes = key.encode('utf-8')
+    salt_bytes = raw_value_str.encode('utf-8')
+
+    hash_bytes = hashlib.pbkdf2_hmac(
+        hash_name='sha256',
+        password=password_bytes,
+        salt=salt_bytes,
+        iterations=iterations
+    )
+
+    return hash_bytes.hex()
+
+
+def verify_packet(packet, config):
+
+    raw_value = round(packet["metric_value"], 2)
+    raw_value_str = f"{raw_value:.2f}"
+
+    secret_key = config["processing"]["stateless_tasks"]["secret_key"]
+    iterations = config["processing"]["stateless_tasks"]["iterations"]
+
+    generated_signature = generate_signature(raw_value_str, secret_key, iterations)
+
+    return generated_signature == packet["security_hash"]

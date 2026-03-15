@@ -1,35 +1,36 @@
-from multiprocessing import Queue
+import time
 
 class PipelineTelemetry:
-    """Subject in the Observer pattern representing the pipeline telemetry monitor.
-    
-    Polls queue sizes independently without coupling directly to processor logic.
-    """
 
-    def __init__(self, raw_queue: Queue, processed_queue: Queue):
+    def __init__(self, raw_queue, verified_queue, processed_queue, max_size):
+
         self.raw_queue = raw_queue
+        self.verified_queue = verified_queue
         self.processed_queue = processed_queue
-        self.observers = []
+        self.max_size = max_size
 
-    def subscribe(self, observer):
-        """Attach an observer."""
-        if observer not in self.observers:
-            self.observers.append(observer)
+    def get_bar(self, size):
 
-    def unsubscribe(self, observer):
-        """Detach an observer."""
-        if observer in self.observers:
-            self.observers.remove(observer)
+        percent = size / self.max_size
 
-    def notify(self):
-        """Notify all observers of the current queue sizes."""
-        # Note: multiprocessing.Queue.qsize() can be approximate, 
-        # but it serves our telemetry requirements.
-        try:
+        filled = int(percent * 10)
+
+        bar = "[" + "#" * filled + "-" * (10 - filled) + "]"
+
+        return bar
+
+    def display(self):
+
+        while True:
+
             raw_size = self.raw_queue.qsize()
-            processed_size = self.processed_queue.qsize()
-            
-            for observer in self.observers:
-                observer.update(raw_size, processed_size)
-        except NotImplementedError:
-            print("Queue size not supported on this platform.")
+            ver_size = self.verified_queue.qsize()
+            proc_size = self.processed_queue.qsize()
+
+            print("\nTELEMETRY")
+
+            print(f"RAW STREAM        {self.get_bar(raw_size)} {raw_size}/{self.max_size}")
+            print(f"INTERMEDIATE      {self.get_bar(ver_size)} {ver_size}/{self.max_size}")
+            print(f"PROCESSED         {self.get_bar(proc_size)} {proc_size}/{self.max_size}")
+
+            time.sleep(1)

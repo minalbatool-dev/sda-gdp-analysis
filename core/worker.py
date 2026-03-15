@@ -1,41 +1,15 @@
-from multiprocessing import Queue
-from typing import Dict, Any
-from core.processors import running_average
+from core.processors import verify_packet
 
-class Worker:
-    """Consumer/Producer: Pulls raw packets, functionally processes them, pushes processed packets."""
+def verification_worker(raw_queue, verified_queue, config):
 
-    def __init__(self, raw_queue: Queue, processed_queue: Queue, config: Dict[str, Any]):
-        self.raw_queue = raw_queue
-        self.processed_queue = processed_queue
-        self.config = config
+    while True:
 
-    def run(self):
-        """Infinite loop pulling from raw_queue, maintaining pure functional states per entity."""
-        window_size = self.config.get("processing", {}).get("running_average_window_size", 10)
-        
-        # State management dictionary: key=entity_name, value=tuple(history)
-        # The processing logic itself is functional; we only bind the new state here.
-        states = {}
+        packet = raw_queue.get()
 
-        while True:
-            item = self.raw_queue.get()
-            
-            # Poison pill pattern
-            if item is None:
-                # Pass poison pill down to output modules
-                self.processed_queue.put(None)
-                break
+        if packet is None:
+            break
 
-            entity = item.get("entity_name")
-            if entity not in states:
-                states[entity] = ()
-
-            # Pure function call, no mutations inside processors
-            new_state, updated_item = running_average(states[entity], item, window_size)
-            
-            # Rebind locally for next iteration
-            states[entity] = new_state
-            
-            # Push processed stream
-            self.processed_queue.put(updated_item)
+        if verify_packet(packet, config):
+            verified_queue.put(packet)
+        else:
+            print("[SECURITY] Dropped spoofed packet")
