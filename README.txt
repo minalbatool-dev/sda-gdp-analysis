@@ -1,20 +1,23 @@
-SECRET_KEY = "sda_spring_2026_secure_key"
-ITERATIONS = 100000
-raw_value = sensor data rounded to two decimal places
+# Phase 3: Generic Concurrent Real-Time Pipeline
 
-def generate_signature(raw_value_str: str, key: str, iterations: int) -> str:
-    """
-    Generates a PBKDF2 HMAC SHA-256 signature for the given value.
-    Treats the secret key as the password and the raw value as the salt.
-    """
-    password_bytes = key.encode('utf-8')
-    salt_bytes = raw_value_str.encode('utf-8')
-    
-    # Generate the hash
-    hash_bytes = hashlib.pbkdf2_hmac(
-        hash_name='sha256', 
-        password=password_bytes, 
-        salt=salt_bytes, 
-        iterations=iterations
-    )
-    return hash_bytes.hex()
+## Overview
+This is the final phase of the Data Processing Pipeline project. The system has been upgraded to a concurrent, multi-core architecture using Python's `multiprocessing` library. It acts as a real-time data ingestion and processing framework, driven entirely by `config.json`.
+
+## How to Run
+
+1. **Configuration**:
+   - The main configuration is stored in `config.json` at the root directory.
+   - Specify your input dataset path in `config.json` under `dataset_path`. By default, it looks for `sample_sensor_data.csv` in the root folder.
+   
+2. **Execution**:
+   - Ensure you have Python 3.8+ installed. No external pip packages are strictly required as everything uses the Python Standard Library.
+   - Run the main orchestrator script from the root directory:
+     ```bash
+     python main.py
+     ```
+
+## Architecture Notes
+- **Input Stream**: Producer reads rows over time and acts on a bounded multiprocessing queue.
+- **Core Processing**: Multiple independent worker processes calculate PBKDF2 signatures and utilize the functional core (`processors.py`) to maintain state.
+- **Telemetry**: Observer Pattern enables UI visualizers to track real-time queue backpressure without violating the Dependency Inversion Principle.
+- **Design Artifacts**: The Class Diagram (`architecture.puml`) and Sequence Diagram (`sequence.puml`), along with their PNG renders, reflect these additions.

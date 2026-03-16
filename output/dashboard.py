@@ -1,8 +1,9 @@
 class Dashboard:
     """Observer: Subscribes to telemetry updates and generates colored capacity warnings."""
 
-    def __init__(self, max_queue_size: int):
+    def __init__(self, max_queue_size: int, config: dict = None):
         self.max_queue_size = max_queue_size
+        self.config = config or {}
 
         # ANSI Escape Codes for Colors
         self.GREEN = "\033[92m"
@@ -10,9 +11,14 @@ class Dashboard:
         self.RED = "\033[91m"
         self.RESET = "\033[0m"
 
-    def update(self, raw_size: int, processed_size: int):
+    def update(self, raw_size: int, worker_size: int, processed_size: int):
         """Receives updates from the PipelineTelemetry subject subject."""
         
+        telemetry_cfg = self.config.get("visualizations", {}).get("telemetry", {})
+        show_raw = telemetry_cfg.get("show_raw_stream", True)
+        show_int = telemetry_cfg.get("show_intermediate_stream", True)
+        show_proc = telemetry_cfg.get("show_processed_stream", True)
+
         def get_color(size):
             percentage = size / self.max_queue_size if self.max_queue_size else 0
             if percentage < 0.5:
@@ -22,18 +28,17 @@ class Dashboard:
             else:
                 return self.RED
                 
-        raw_color = get_color(raw_size)
-        proc_color = get_color(processed_size)
+        def build_bar(size, color):
+            fill = int((size / self.max_queue_size) * 20) if self.max_queue_size else 0
+            bar = "=" * fill + "-" * (20 - fill)
+            return f"{color}[{bar}] {size}/{self.max_queue_size}{self.RESET}"
+
+        parts = []
+        if show_raw:
+            parts.append(f"Raw: {build_bar(raw_size, get_color(raw_size))}")
+        if show_int:
+            parts.append(f"Intermediate: {build_bar(worker_size, get_color(worker_size))}")
+        if show_proc:
+            parts.append(f"Processed: {build_bar(processed_size, get_color(processed_size))}")
         
-        # Build UI Bar
-        bar_length = 20
-        raw_fill = int((raw_size / self.max_queue_size) * bar_length) if self.max_queue_size else 0
-        proc_fill = int((processed_size / self.max_queue_size) * bar_length) if self.max_queue_size else 0
-        
-        raw_bar = "=" * raw_fill + "-" * (bar_length - raw_fill)
-        proc_bar = "=" * proc_fill + "-" * (bar_length - proc_fill)
-        
-        # We output a carriage return string so it overlays dynamically, 
-        # but standard print is safer in multi-process/threaded environments if interleaving occurs.
-        print(f"\rTELEMETRY | Raw: {raw_color}[{raw_bar}] {raw_size}/{self.max_queue_size}{self.RESET} | "
-              f"Processed: {proc_color}[{proc_bar}] {processed_size}/{self.max_queue_size}{self.RESET}", end="")
+        print(f"\rTELEMETRY | {' | '.join(parts)}{' ' * 10}", end="")

@@ -1,34 +1,28 @@
-from typing import Dict, Any, Tuple
+from collections import deque
 
-def running_average(state: tuple, item: Dict[str, Any], window_size: int) -> Tuple[tuple, Dict[str, Any]]:
+
+def running_average(state, item, window_size):
+
     """
-    Purely functional calculation of a running average.
-    
-    Args:
-        state: A tuple representing the previous history. e.g., (oldest_val, next_val, ..., newest_val). 
-               Must be immutable.
-        item: The current generic data packet.
-        window_size: The window size for the running average.
-        
-    Returns:
-        (new_state, updated_item): The new immutable state and the item with added calculations.
+    Functional core: compute running average per entity.
+
+    state: tuple containing the sliding window
+    item: incoming data packet
+    window_size: max window size
     """
-    
-    metric_value = item.get("metric_value", 0.0)
-    
-    # Calculate new state
-    new_state_list = list(state)
-    new_state_list.append(metric_value)
-    if len(new_state_list) > window_size:
-        new_state_list = new_state_list[-window_size:]
-        
-    new_state = tuple(new_state_list)
-    
-    # Calculate computed metric
-    computed_avg = sum(new_state) / len(new_state) if new_state else 0.0
-    
-    # Do not mutate the original dictionary
+
+    if not state:
+        window = deque(maxlen=window_size)
+    else:
+        window = state
+
+    value = item.get("metric_value", 0.0)
+
+    window.append(value)
+
+    avg = sum(window) / len(window)
+
     updated_item = item.copy()
-    updated_item["computed_metric"] = computed_avg
-    
-    return new_state, updated_item
+    updated_item["running_average"] = avg
+
+    return window, updated_item
