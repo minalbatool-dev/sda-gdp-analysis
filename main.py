@@ -1,13 +1,20 @@
 import multiprocessing as mp
 import json
 import time
+import threading
 
 from input.input_reader import InputReader
 from core.worker import start_worker
 from core.aggregator import start_aggregator
 from telemetry.pipeline_telemetry import PipelineTelemetry
-from output.dashboard import Dashboard
-from output.charts import LiveCharts
+from output.gui import MatplotlibDashboard
+
+
+def telemetry_poller(telemetry, producer):
+    """ Polls telemetry in the background so the GUI thread isn't blocked. """
+    while producer.is_alive():
+        telemetry.notify()
+        time.sleep(0.1)
 
 
 def main():
@@ -35,10 +42,9 @@ def main():
     # -------------------------------
     telemetry = PipelineTelemetry(raw_queue, worker_queue, processed_queue)
 
-    dashboard = Dashboard(max_size, config)
+    # GUI Dashboard
+    dashboard = MatplotlibDashboard(max_size, config, processed_queue)
     telemetry.subscribe(dashboard)
-
-    charts = LiveCharts(config)
 
     # -------------------------------
     # Producer
@@ -77,49 +83,28 @@ def main():
 
     aggregator.start()
 
-    producer_alive = True
+    print("\n[SYSTEM] Pipeline started. Opening dashboard...\n")
 
-    print("\n[SYSTEM] Pipeline started\n")
+    # Start independent telemetry thread
+    poller = threading.Thread(target=telemetry_poller, args=(telemetry, producer), daemon=True)
+    poller.start()
 
     # -------------------------------
-    # Main event loop
+    # Blocking GUI loop
     # -------------------------------
-    while True:
+    dashboard.show()
 
-        # If producer finished → send poison pills
-        if producer_alive and not producer.is_alive():
-
-            producer_alive = False
-            producer.join()
-
-            print("\n[SYSTEM] Input stream finished. Sending poison pills...\n")
-
-            for _ in range(parallelism):
-                raw_queue.put(None)
-
-        # ---------------------------
-        # Read processed output
-        # ---------------------------
-        try:
-            while True:
-
-                item = processed_queue.get_nowait()
-
-                if item is None:
-                    print("\n[SYSTEM] Pipeline finished successfully\n")
-                    return
-
-                charts.render(item)
-
-        except:
-            pass
-
-        # ---------------------------
-        # Update telemetry
-        # ---------------------------
-        telemetry.notify()
-
-        time.sleep(0.5)
+    # If window is closed, shut down cleanly
+    print("\n[SYSTEM] Shutting down...")
+    if producer.is_alive():
+        producer.terminate()
+        
+    for w in workers:
+        w.terminate()
+        
+    aggregator.terminate()
+    
+    print("[SYSTEM] Pipeline finished successfully\n")
 
 
 if __name__ == "__main__":
